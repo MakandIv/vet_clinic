@@ -29,7 +29,7 @@ public class Main {
             System.out.println("The program has ended.");
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Database connection error.");
         }
     }
 
