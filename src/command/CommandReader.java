@@ -1,10 +1,20 @@
 package command;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.sql.Connection;
 
+/**
+ * User command parser. Has one public method "readCommand" that parses the command type.
+ */
 public class CommandReader {
 
-    private static CommandType getCommandType(String commandType) {
+    /**
+     * Specifies the command type.
+     * @param commandType command keyword that specifies its type
+     * @return if it is an existing command type, returns its CommandType, otherwise returns CommandType.UNDEFINED.
+     */
+    private static CommandType getCommandType(@NotNull String commandType) {
         return switch (commandType) {
             case "create" -> CommandType.CREATE;
             case "edit" -> CommandType.EDIT;
@@ -15,7 +25,7 @@ public class CommandReader {
         };
     }
 
-    public static int readCommand(Connection connection, String command) {
+    public static int readCommand(@NotNull Connection connection, @NotNull String command) {
         CommandType commandType = getCommandType((command.split(" "))[0]);
 
         return switch (commandType) {

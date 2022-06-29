@@ -4,8 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
+/**
+ * The class creates all the necessary fields for entering into the table.
+ */
 public class Doctor {
-    /* A class  */
 
     private String surname; // doctor surname
     private String name; // doctor name
@@ -25,8 +27,7 @@ public class Doctor {
     }
 
     /**
-     * Constructs a new repository.Doctor with all fields: surname, name and patronymic.
-     *
+     * Constructs a new Doctor. Doctor with all fields: surname, name and patronymic.
      * @param surname doctor surname string
      * @param name doctor name string
      * @param patronymic doctor patronymic string
@@ -38,8 +39,7 @@ public class Doctor {
     }
 
     /**
-     * Constructs a new repository.Doctor with the fields: surname and name, without patronymic.
-     *
+     * Constructs a new Doctor. Doctor with the fields: surname and name, without patronymic.
      * @param surname doctor surname string
      * @param name doctor name string
      */
@@ -48,7 +48,7 @@ public class Doctor {
     }
 
     /**
-     * Constructs a new repository.Doctor without the fields. When called, requests data from the console.
+     * Constructs a new Doctor. Doctor without the fields. When called, requests data from the console.
      */
     public Doctor() {
         Scanner scanner = new Scanner(System.in);
@@ -58,10 +58,7 @@ public class Doctor {
         String name = scanner.nextLine();
         System.out.println("Patronymic (if it doesn't exist, leave the field blank.): ");
         String patronymic = scanner.nextLine();
-        if (patronymic.equals("")) {
-            new Doctor(surname, name);
-        } else {
-            new Doctor(surname, name, patronymic);
-        }
+        scanner.close();
+        new Doctor(surname, name, patronymic);
     }
 }

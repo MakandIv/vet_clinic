@@ -29,6 +29,7 @@ public class Creator {
             System.out.println("What do you want to create? Enter patient/doctor. Enter \"exit\" for exit creator.");
             Scanner scanner = new Scanner(System.in);
             createdObject = scanner.nextLine();
+            scanner.close();
         }
         return switch (createdObject) {
             case "patient" -> createPatient(connection, commandArray);
@@ -46,11 +47,11 @@ public class Creator {
      */
     private static int createDoctor(Connection connection, String... fullName) {
         Doctor doctor;
-        if (fullName.length < 3) {
+        if (fullName.length < 3) { // if not exist data
             doctor = new Doctor();
-        } else if (fullName.length == 4) {
+        } else if (fullName.length == 4) { // if exist surname and name
             doctor = new Doctor(fullName[2], fullName[3]);
-        } else if (fullName.length >= 5) {
+        } else if (fullName.length >= 5) { // if exist all data
             doctor = new Doctor(fullName[2], fullName[3], fullName[4]);
         } else {
             return -1;
@@ -62,7 +63,7 @@ public class Creator {
             statement.setString(2, doctor.getName());
             statement.setString(3, doctor.getPatronymic());
 
-            int rows = statement.executeUpdate(sql);
+            int rows = statement.executeUpdate();
 
             if (rows > 0) {
                 return 0;
@@ -83,11 +84,11 @@ public class Creator {
      */
     private static int createPatient(Connection connection, String... fullName) {
         Patient patient;
-        if (fullName.length < 3) {
+        if (fullName.length < 3) { // if not exist data
             patient = new Patient();
-        } else if (fullName.length == 4) {
+        } else if (fullName.length == 4) { // if exist surname and name
             patient = new Patient(fullName[2], fullName[3]);
-        } else if (fullName.length >= 5) {
+        } else if (fullName.length >= 5) { // if exist all data
             patient = new Patient(fullName[2], fullName[3], fullName[4]);
         } else {
             return -1;
@@ -100,7 +101,7 @@ public class Creator {
             statement.setString(3, patient.getPatronymic());
             statement.setTimestamp(4, Timestamp.from(patient.getTimestamp()));
 
-            int rows = statement.executeUpdate(sql);
+            int rows = statement.executeUpdate();
 
             if (rows > 0) {
                 return 0;
