@@ -9,10 +9,9 @@ import java.util.Scanner;
  */
 public class Doctor {
 
-    private String surname; // doctor surname
-    private String name; // doctor name
-    private String patronymic; // doctor patronymic
-
+    private final String surname; // doctor surname
+    private final String name; // doctor name
+    private final String patronymic; // doctor patronymic
 
     public String getSurname() {
         return surname;
@@ -44,7 +43,9 @@ public class Doctor {
      * @param name doctor name string
      */
     public Doctor(@NotNull String surname, @NotNull String name) {
-        new Doctor(surname, name, "");
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = "";
     }
 
     /**
@@ -58,7 +59,8 @@ public class Doctor {
         String name = scanner.nextLine();
         System.out.println("Patronymic (if it doesn't exist, leave the field blank.): ");
         String patronymic = scanner.nextLine();
-        scanner.close();
-        new Doctor(surname, name, patronymic);
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
     }
 }

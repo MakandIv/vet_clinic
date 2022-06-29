@@ -2,7 +2,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  * The class responsible for connecting to the database. The connection is performed by the "connect" method.
  */

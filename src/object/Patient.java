@@ -10,33 +10,21 @@ import java.util.Scanner;
  */
 public class Patient {
 
-    private String surname; // patient surname
-    private String name; // patient name
-    private String patronymic; // patient patronymic
-    private Instant timestamp; // creation timestamp;
+    private final String surname; // patient surname
+    private final String name; // patient name
+    private final String patronymic; // patient patronymic
+    private final Instant timestamp; // creation timestamp;
 
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPatronymic() {
         return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
     }
 
     public Instant getTimestamp() {
@@ -62,7 +50,10 @@ public class Patient {
      * @param name doctor name string
      */
     public Patient(String surname, String name) {
-        new Patient(surname, name, "");
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = "";
+        this.timestamp = Instant.now();
     }
 
     /**
@@ -76,7 +67,9 @@ public class Patient {
         String name = scanner.nextLine();
         System.out.println("Patronymic (if it doesn't exist, leave the field blank.): ");
         String patronymic = scanner.nextLine();
-        scanner.close();
-        new Patient(surname, name, patronymic);
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.timestamp = Instant.now();
     }
 }
