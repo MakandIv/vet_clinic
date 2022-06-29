@@ -1,5 +1,5 @@
 # vet_clinic
-The program for working with the database of the veterinary clinic.
+The program for working with the database of the veterinary clinic. (As part of the production practice.)
 
 ## Requirements
 1. PostgreSQL 14
